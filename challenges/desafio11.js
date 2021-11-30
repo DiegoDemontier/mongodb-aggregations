@@ -2,7 +2,6 @@ db.trips.aggregate([
   {
     $project: {
       _id: 0,
-      usertype: 1,
       startTime: { $dayOfWeek: "$startTime" },
     },
   },
