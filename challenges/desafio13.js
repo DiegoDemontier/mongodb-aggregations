@@ -11,18 +11,15 @@ db.trips.aggregate([
     },
   },
   {
-    $group: {
-      _id: "$_id",
+    $project: {
+      _id: 0,
       duracaoMediaEmMinutos:
         {
-          $avg:
+          $dateDiff:
             {
-              $dateDiff:
-                {
-                  startDate: "$startTime",
-                  endDate: "$stopTime",
-                  unit: "minute",
-                },
+              startDate: "$startTime",
+              endDate: "$stopTime",
+              unit: "minute",
             },
         },
     },
